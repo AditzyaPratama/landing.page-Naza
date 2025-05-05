@@ -2,15 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <!-- Tambahkan Judul WEB -->
     <title>MyProducts | LOGIN</title>
-    <!-- Tambahkan Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f7f7f7;
             margin: 0;
             padding: 0;
+            background-color: #000;
         }
         #bgVideo {
             position: fixed;
@@ -28,21 +26,44 @@
             min-height: 100vh;
         }
         .login-box {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.05); /* transparan seperti contoh */
+            backdrop-filter: blur(10px); /* efek blur seperti gambar */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
         .logo-img {
             max-width: 100px;
-            margin: 0 auto;
+            margin: 0 auto 15px;
             display: block;
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+        }
+        .form-control::placeholder {
+            color: #ccc;
+        }
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            box-shadow: none;
+        }
+        .btn-outline-success {
+            background-color: #fff;
+            color: #000;
+            border: none;
+        }
+        .btn-outline-success:hover {
+            background-color: #ddd;
+            color: #000;
         }
     </style>
 </head>
 <body>
 
-    <!-- Tambahkan Video Background -->
     <video autoplay muted loop id="bgVideo">
         <source src="alam.mp4" type="video/mp4">
         Browser tidak mendukung video.
@@ -50,12 +71,9 @@
 
     <div class="container centered-content">
         <div class="col-md-4">
-            <div class="login-box">
-                <!--Tambah Judul-->
-                <h2 class="text-center">MyProducts Login</h2>
-                <!--Tambah gambar depan-->
+            <div class="login-box text-center">
+                <h2>MyProducts Login</h2>
                 <img src="image/5.png" alt="Logo Frozen Delights" class="logo-img">
-                <!--Atur Formulir-->
                 <form id="loginForm">
                     <div class="mb-3">
                         <input type="text" class="form-control" id="username" placeholder="admin">
@@ -63,7 +81,6 @@
                     <div class="mb-3">
                         <input type="password" class="form-control" id="password" placeholder="password1234">
                     </div>
-                    <!--Atur Button-->
                     <button type="submit" class="btn btn-outline-success w-100">LOGIN</button>
                 </form>
             </div>
@@ -71,26 +88,22 @@
     </div>
 
     <script>
-        // Data pengguna yang tersimpan (contoh sederhana)
         const userData = {
             username: 'admin',
             password: 'password1234'
         };
-        // Tangani login form
-        const loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', function(event) {
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Validasi
             if (username.trim() === '' || password.trim() === '') {
                 alert('Username dan password harus diisi.');
             } else if (username !== userData.username || password !== userData.password) {
                 alert('Username atau password tidak valid.');
             } else {
-                // Redirect ke halaman utama setelah login jika valid
                 window.location.href = 'utama.html';
             }
         });
